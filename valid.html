@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Validasi form tambah
+        $("#formTambah").validate({
+          rules: {
+            id: {
+              required: true,
+              minlength: 1,
+            },
+            product: {
+              required: true,
+              email: 5,
+            },
+            quantity: {
+              required: true,
+              minlength: 1,
+            },
+          },
+          messages: {
+            id: {
+              required: "ID harus diisi",
+              minlength: "ID jangan kosong",
+            },
+            product: {
+              required: "Product harus diisi",
+              email: "Masukkan product yang di pesan",
+            },
+            quantity: {
+              required: "Quantity harus diisi",
+              minlength: "Quantity diisi sesuai yang diinginkan",
+            },
+          },
+          submitHandler: function (form) {
+            // Proses simpan data
+            // ...
+
+            // Reset form
+            $(form).trigger("reset");
+          },
+        });
+
+        // Validasi form update
+        $("#formUpdate").validate({
+          rules: {
+            id: {
+              required: true,
+              minlength: 1,
+            },
+            product: {
+              required: true,
+              email: 5,
+            },
+            quantity: {
+              required: true,
+              minlength: 1,
+            },
+          },
+          messages: {
+            id: {
+              required: "ID harus diisi",
+              minlength: "ID jangan kosong",
+            },
+            product: {
+              required: "Product harus diisi",
+              email: "Masukkan product yang di pesan",
+            },
+            quantity: {
+              required: "Quantity harus diisi",
+              minlength: "Quantity diisi sesuai yang diinginkan",
+            },
+          },
+          submitHandler: function (form) {
+            // Proses update data
+            // ...
+
+            // Reset form
+            $(form).trigger("reset");
+          },
+        });
+
+        // Tampilkan datepicker pada input tanggal lahir
+        //     $("#tanggalLahir").datepicker();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Form Tambah</h1>
+    <form id="formTambah">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" required minlength="1" /><br />
+
+      <label for="product">Product:</label>
+      <input
+        type="text"
+        id="product"
+        name="product"
+        required
+        minlength="5"
+      /><br />
+
+      <label for="quantity">Quantity:</label>
+      <input
+        type="text"
+        id="quantity"
+        name="quantity"
+        required
+        minlength="1"
+      /><br />
+
+      <input type="submit" value="Simpan" />
+    </form>
+
+    <h1>Form Update</h1>
+    <form id="formUpdate">
+      <label for="product">Product:</label>
+      <input
+        type="text"
+        id="product"
+        name="product"
+        required
+        minlength="5"
+      /><br />
+    </form>
+  </body>
+</html>
