@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Panggil API untuk mendapatkan data
+        $.ajax({
+          url: "http://localhost:3000/api/orders",
+          method: "GET",
+          dataType: "json",
+          success: function (data) {
+            // Inisialisasi DataTable
+            $("#dataTable").DataTable({
+              data: data,
+              columns: [
+                { data: "id" },
+                { data: "product" },
+                { data: "quantity" },
+              ],
+            });
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Product</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+</html>
